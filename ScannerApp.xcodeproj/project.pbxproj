@@ -13,6 +13,8 @@
 		DFA138AB2C7FA7F900BB5EEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA138AA2C7FA7F900BB5EEB /* Preview Assets.xcassets */; };
 		DFA4BA022C7FAE0900FEC350 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA4BA012C7FAE0900FEC350 /* Launch Screen.storyboard */; };
 		DFA4BA052C7FBA8B00FEC350 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4BA042C7FBA8B00FEC350 /* Color.swift */; };
+		DFA4BA072C8048C500FEC350 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4BA062C8048C500FEC350 /* CameraPreview.swift */; };
+		DFA4BA092C8048E800FEC350 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4BA082C8048E800FEC350 /* CameraManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		DFA138AA2C7FA7F900BB5EEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFA4BA012C7FAE0900FEC350 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DFA4BA042C7FBA8B00FEC350 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		DFA4BA062C8048C500FEC350 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		DFA4BA082C8048E800FEC350 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 		DFA138A22C7FA7F700BB5EEB /* ScannerApp */ = {
 			isa = PBXGroup;
 			children = (
-				DFA4BA032C7FBA7F00FEC350 /* Extension */,
+				DFA4BA032C7FBA7F00FEC350 /* Extensions */,
 				DFA138A32C7FA7F700BB5EEB /* ScannerAppApp.swift */,
+				DFA4BA062C8048C500FEC350 /* CameraPreview.swift */,
+				DFA4BA082C8048E800FEC350 /* CameraManager.swift */,
 				DFA138A52C7FA7F700BB5EEB /* ContentView.swift */,
 				DFA4BA012C7FAE0900FEC350 /* Launch Screen.storyboard */,
 				DFA138A72C7FA7F900BB5EEB /* Assets.xcassets */,
@@ -73,12 +79,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		DFA4BA032C7FBA7F00FEC350 /* Extension */ = {
+		DFA4BA032C7FBA7F00FEC350 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				DFA4BA042C7FBA8B00FEC350 /* Color.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +159,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFA138A62C7FA7F700BB5EEB /* ContentView.swift in Sources */,
+				DFA4BA072C8048C500FEC350 /* CameraPreview.swift in Sources */,
 				DFA138A42C7FA7F700BB5EEB /* ScannerAppApp.swift in Sources */,
 				DFA4BA052C7FBA8B00FEC350 /* Color.swift in Sources */,
+				DFA4BA092C8048E800FEC350 /* CameraManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +299,7 @@
 				DEVELOPMENT_TEAM = 6ZMD6YALF7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Scanner App";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is used for capturing photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -322,7 +330,7 @@
 				DEVELOPMENT_TEAM = 6ZMD6YALF7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Scanner App";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is used for capturing photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

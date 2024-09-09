@@ -87,7 +87,7 @@ struct GradientBackgroundWithCurve: View {
                 path.addLine(to: CGPoint(x: width, y: height * 0.9))
                 path.addQuadCurve(
                     to: CGPoint(x: width/2, y: height * 0.9),
-                    control: CGPoint(x: width*3/4, y: height*0.85)
+                    control: CGPoint(x: width*3/4, y: height*0.86)
                 )
                 path.addQuadCurve(
                     to: CGPoint(x: 0, y: height * 0.9),
