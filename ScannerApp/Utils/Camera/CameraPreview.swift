@@ -58,51 +58,52 @@ struct CameraPreview: UIViewRepresentable { // for attaching AVCaptureVideoPrevi
 	}
 }
 
-struct ImagePickerView: UIViewControllerRepresentable {
-	@Binding var image: Image?
-	@Environment(\.presentationMode) private var presentationMode
-	var saveToGallery: Bool = false // Add a flag to control whether to save to gallery
-
-	func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePickerView>) -> UIImagePickerController {
-		let imagePicker = UIImagePickerController()
-		imagePicker.sourceType = .camera
-		imagePicker.delegate = context.coordinator
-		return imagePicker
-	}
-
-	func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePickerView>) {}
-
-	func makeCoordinator() -> Coordinator {
-		Coordinator(self)
-	}
-
-	class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-		var parent: ImagePickerView
-
-		init(_ parent: ImagePickerView) {
-			self.parent = parent
-		}
-
-		func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-			if let uiImage = info[.originalImage] as? UIImage {
-				parent.image = Image(uiImage: uiImage)
-				if parent.saveToGallery {
-					saveImageToGallery(uiImage)
-				}
-			}
-			parent.presentationMode.wrappedValue.dismiss()
-		}
-
-		func saveImageToGallery(_ image: UIImage) {
-			PHPhotoLibrary.shared().performChanges {
-				PHAssetChangeRequest.creationRequestForAsset(from: image)
-			} completionHandler: { success, error in
-				if success {
-					print("Image saved to gallery.")
-				} else if let error = error {
-					print("Error saving image to gallery: \(error)")
-				}
-			}
-		}
-	}
-}
+//struct ImagePickerView: UIViewControllerRepresentable {
+//	@Binding var image: Image?
+//    @Binding var images: [Image]
+//	@Environment(\.presentationMode) private var presentationMode
+//	var saveToGallery: Bool = false // Add a flag to control whether to save to gallery
+//
+//	func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePickerView>) -> UIImagePickerController {
+//		let imagePicker = UIImagePickerController()
+//		imagePicker.sourceType = .camera
+//		imagePicker.delegate = context.coordinator
+//		return imagePicker
+//	}
+//
+//	func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePickerView>) {}
+//
+//	func makeCoordinator() -> Coordinator {
+//		Coordinator(self)
+//	}
+//
+//	class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+//		var parent: ImagePickerView
+//
+//		init(_ parent: ImagePickerView) {
+//			self.parent = parent
+//		}
+//
+//		func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+//			if let uiImage = info[.originalImage] as? UIImage {
+//				parent.image = Image(uiImage: uiImage)
+//				if parent.saveToGallery {
+//					saveImageToGallery(uiImage)
+//				}
+//			}
+//			parent.presentationMode.wrappedValue.dismiss()
+//		}
+//
+//		func saveImageToGallery(_ image: UIImage) {
+//			PHPhotoLibrary.shared().performChanges {
+//				PHAssetChangeRequest.creationRequestForAsset(from: image)
+//			} completionHandler: { success, error in
+//				if success {
+//					print("Image saved to gallery.")
+//				} else if let error = error {
+//					print("Error saving image to gallery: \(error)")
+//				}
+//			}
+//		}
+//	}
+//}

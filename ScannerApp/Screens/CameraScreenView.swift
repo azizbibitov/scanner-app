@@ -11,6 +11,7 @@ import SwiftUI
 struct CameraScreenView: View {
 
     @ObservedObject var viewModel = CameraViewModel()
+    @EnvironmentObject var coordinator: Coordinator
 
     @State private var isFocused = false
     @State private var isScaled = false
@@ -23,13 +24,17 @@ struct CameraScreenView: View {
                 Color.black.edgesIgnoringSafeArea(.all)
 
                 VStack(spacing: 0) {
-                    Button(action: {
-                        viewModel.switchFlash()
-                    }, label: {
-                        Image(systemName: viewModel.isFlashOn ? "bolt.fill" : "bolt.slash.fill")
-                            .font(.system(size: 20, weight: .medium, design: .default))
-                    })
-                    .accentColor(viewModel.isFlashOn ? .yellow : .white)
+                    HStack {
+                        Button(action: {
+                            viewModel.switchFlash()
+                        }, label: {
+                            Image(systemName: viewModel.isFlashOn ? "bolt.fill" : "bolt.slash.fill")
+                                .font(.system(size: 20, weight: .medium, design: .default))
+                        })
+                        .accentColor(viewModel.isFlashOn ? .yellow : .white)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
 
                     ZStack {
                         CameraPreview(session: viewModel.session) { tapPoint in
@@ -44,7 +49,7 @@ struct CameraScreenView: View {
                                 self.currentZoomFactor = min(max(self.currentZoomFactor, 0.5), 10)
                                 self.viewModel.zoom(with: currentZoomFactor)
                             })
-//                        .animation(.easeInOut, value: 0.5)
+                        //                        .animation(.easeInOut, value: 0.5)
 
                         if isFocused {
                             FocusView(position: $focusLocation)
@@ -62,11 +67,19 @@ struct CameraScreenView: View {
                     }
 
                     HStack {
+//                        CameraSwitchButton { viewModel.switchCamera() }
                         PhotoThumbnail(image: $viewModel.capturedImage)
                         Spacer()
                         CaptureButton { viewModel.captureImage() }
                         Spacer()
-                        CameraSwitchButton { viewModel.switchCamera() }
+                        Button {
+                            coordinator.navigateTo(page: .crop(images: viewModel.capturedImages))
+                        } label: {
+                            Text("NEXT")
+                                .font(.title2)
+                                .foregroundStyle(.white)
+                        }
+
                     }
                     .padding(20)
                 }
@@ -111,26 +124,9 @@ struct PhotoThumbnail: View {
 
             } else {
                 Rectangle()
-                    .frame(width: 50, height: 50, alignment: .center)
+                    .frame(width: 60, height: 60, alignment: .center)
                     .foregroundColor(.black)
             }
-        }
-    }
-}
-
-struct CaptureButton: View {
-    var action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Circle()
-                .foregroundColor(.white)
-                .frame(width: 70, height: 70, alignment: .center)
-                .overlay(
-                    Circle()
-                        .stroke(Color.black.opacity(0.8), lineWidth: 2)
-                        .frame(width: 59, height: 59, alignment: .center)
-                )
         }
     }
 }

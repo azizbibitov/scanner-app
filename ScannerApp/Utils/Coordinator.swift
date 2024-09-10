@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 
-enum Page {
+enum Page: Hashable {
     case camera
+    case crop(images: [UIImage])
 }
 
 class Coordinator: ObservableObject {
@@ -20,6 +21,8 @@ class Coordinator: ObservableObject {
         switch page {
         case .camera:
             CameraScreenView()
+        case .crop(let images):
+            CropScreenView(images: images)
         }
     }
 

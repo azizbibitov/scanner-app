@@ -20,7 +20,8 @@ class CameraViewModel: ObservableObject {
 	@Published var isPermissionGranted: Bool = false
 	
 	@Published var capturedImage: UIImage?
-	
+    @Published var capturedImages: [UIImage] = []
+
 	var alertError: AlertError!
 	var session: AVCaptureSession = .init()
 	private var cancelables = Set<AnyCancellable>()
@@ -43,6 +44,10 @@ class CameraViewModel: ObservableObject {
 		cameraManager.$capturedImage.sink { [weak self] image in
 			self?.capturedImage = image
 		}.store(in: &cancelables)
+
+        cameraManager.$capturedImages.sink { [weak self] images in
+            self?.capturedImages = images
+        }.store(in: &cancelables)
 	}
 	
 	func requestCameraPermission() {

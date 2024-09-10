@@ -19,6 +19,7 @@ enum Status {
 class CameraManager: ObservableObject {
 	
 	@Published var capturedImage: UIImage? = nil
+    @Published var capturedImages: [UIImage] = []
 	@Published private var flashMode: AVCaptureDevice.FlashMode = .off
 	
 	@Published var status = Status.unconfigured
@@ -206,6 +207,8 @@ class CameraManager: ObservableObject {
 			
 			cameraDelegate = CameraDelegate { [weak self] image in
 				self?.capturedImage = image
+                guard let image = image else { return }
+                self?.capturedImages.append(image)
 			}
 			
 			if let cameraDelegate {
@@ -231,7 +234,7 @@ class CameraDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 		}
 		
 		if let imageData = photo.fileDataRepresentation(), let capturedImage = UIImage(data: imageData) {
-			saveImageToGallery(capturedImage)
+//			saveImageToGallery(capturedImage)
 			completion(capturedImage)
 		} else {
 			print("CameraManager: Image not fetched.")
