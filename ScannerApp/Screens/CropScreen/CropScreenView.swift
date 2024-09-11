@@ -52,6 +52,7 @@ class CropScreenViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInset.left = (view.bounds.width - 320)/2
+        scrollView.contentInset.right = (view.bounds.width - 320)/2
         return scrollView
     }()
 

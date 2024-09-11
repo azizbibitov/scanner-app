@@ -25,7 +25,7 @@ class Coordinator: ObservableObject {
         case .crop(let images):
             CropScreenView(images: images)
         case .filter(images: let images):
-            Text("")
+            FilterScreenView(images: images)
         }
     }
 
