@@ -13,7 +13,8 @@ struct CameraPreview: UIViewRepresentable { // for attaching AVCaptureVideoPrevi
 	
 	let session: AVCaptureSession
 	var onTap: (CGPoint) -> Void
-	
+    var onDoubleTap: () -> Void
+
 	func makeUIView(context: Context) -> VideoPreviewView {
 		let view = VideoPreviewView()
 		view.backgroundColor = .black
@@ -24,6 +25,10 @@ struct CameraPreview: UIViewRepresentable { // for attaching AVCaptureVideoPrevi
 		// Add a tap gesture recognizer to the view
 		let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTapGesture(_:)))
 		view.addGestureRecognizer(tapGesture)
+
+        let doubleTapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleDoubleTapGesture(_:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        view.addGestureRecognizer(doubleTapGesture)
 		return view
 	}
 	
@@ -55,6 +60,10 @@ struct CameraPreview: UIViewRepresentable { // for attaching AVCaptureVideoPrevi
 			let location = sender.location(in: sender.view)
 			parent.onTap(location)
 		}
+
+        @objc func handleDoubleTapGesture(_ sender: UITapGestureRecognizer) {
+            parent.onDoubleTap()
+        }
 	}
 }
 

@@ -1,26 +1,11 @@
 //
-//  CropScreenView.swift
+//  CarouselSwiftUI.swift
 //  ScannerApp
 //
-//  Created by Aziz Bibitov on 09.09.2024.
+//  Created by Aziz Bibitov on 10.09.2024.
 //
 
 import SwiftUI
-
-struct CropScreenView: View {
-    var images: [UIImage] = (1...7).compactMap { UIImage(named: "images\($0)") }
-
-    var body: some View {
-        ZStack {
-            VStack {
-                HeaderView(title: "Crop")
-                CarouselView(images: images)
-                Spacer()
-            }
-        }
-        .navigationBarBackButtonHidden(true)
-    }
-}
 
 struct CarouselView: View {
     let images: [UIImage]
@@ -90,7 +75,3 @@ struct CarouselItem: View {
             .scaleEffect(isActive ? 1 : scaleFactor)
     }
 }
-
-#Preview(body: {
-    CropScreenView()
-})

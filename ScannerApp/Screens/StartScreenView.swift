@@ -36,29 +36,13 @@ struct StartScreenView: View {
                             .padding(.top, 5)
 
                         Spacer()
-
+                        
                         Button(action: {
                             coordinator.navigateTo(page: .camera)
                         }) {
                             Text("NEXT")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding(10)
-                                .background(
-                                    LinearGradient(
-                                        colors: [Color.blueLightCustom, Color.blueDarkCustom],
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                )
-                                .cornerRadius(30)
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .stroke(Color(hex: "DADCFF"), lineWidth: 3)
-                                }
                         }
+                        .buttonStyle(GradientButtonStyle())
                         .padding(.horizontal, 50)
 
                         let link = "[Terms of Service](https://www.apple.com/legal/privacy)" + " | " + "[Privacy Policy](https://www.apple.com/legal/internet-services/terms/site.html)"

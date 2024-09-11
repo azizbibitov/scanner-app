@@ -11,6 +11,7 @@ import SwiftUI
 enum Page: Hashable {
     case camera
     case crop(images: [UIImage])
+    case filter(images: [UIImage])
 }
 
 class Coordinator: ObservableObject {
@@ -23,6 +24,8 @@ class Coordinator: ObservableObject {
             CameraScreenView()
         case .crop(let images):
             CropScreenView(images: images)
+        case .filter(images: let images):
+            Text("")
         }
     }
 

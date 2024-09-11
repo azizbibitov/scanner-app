@@ -42,6 +42,8 @@ struct CameraScreenView: View {
                             focusLocation = tapPoint
                             viewModel.setFocus(point: tapPoint)
                             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        } onDoubleTap: {
+//                            viewModel.switchCamera()
                         }
                         .gesture(MagnificationGesture()
                             .onChanged { value in
@@ -73,6 +75,12 @@ struct CameraScreenView: View {
                         CaptureButton { viewModel.captureImage() }
                         Spacer()
                         Button {
+//                            var flippedImages: [UIImage] = []
+//                            viewModel.capturedImages.forEach { picture in
+//                                var flippedImage = UIImage(cgImage: picture.cgImage!, scale: picture.scale, orientation: .leftMirrored)
+//                                flippedImages.append(flippedImage)
+//                            }
+
                             coordinator.navigateTo(page: .crop(images: viewModel.capturedImages))
                         } label: {
                             Text("NEXT")
