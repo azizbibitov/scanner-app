@@ -49,6 +49,7 @@
 		DFA138AB2C7FA7F900BB5EEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA138AA2C7FA7F900BB5EEB /* Preview Assets.xcassets */; };
 		DFA4BA022C7FAE0900FEC350 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA4BA012C7FAE0900FEC350 /* Launch Screen.storyboard */; };
 		DFA4BA052C7FBA8B00FEC350 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4BA042C7FBA8B00FEC350 /* Color.swift */; };
+		DFED48392C92F0BB0046D1F1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFED48382C92F0BB0046D1F1 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		DFA138AA2C7FA7F900BB5EEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFA4BA012C7FAE0900FEC350 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DFA4BA042C7FBA8B00FEC350 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		DFED48382C92F0BB0046D1F1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FBB9FF32E6BC5F7D38BEFF8B /* Pods-ScannerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScannerApp.release.xcconfig"; path = "Target Support Files/Pods-ScannerApp/Pods-ScannerApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				DF8E94882C91FA05000C6A4E /* Cropper */,
 				DF0AA6DC2C8F291100E82F3A /* Camera */,
 				DF0AA6DA2C8F286C00E82F3A /* Coordinator.swift */,
+				DFED48382C92F0BB0046D1F1 /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				DF8E94A02C920E00000C6A4E /* GradientButtonStyle.swift in Sources */,
 				DF8E947D2C90927F000C6A4E /* CarouselSwiftUI.swift in Sources */,
 				DF0AA6EF2C8F343D00E82F3A /* HeaderView.swift in Sources */,
+				DFED48392C92F0BB0046D1F1 /* Utils.swift in Sources */,
 				DF8E94942C91FA11000C6A4E /* NSLayoutConstraint+.swift in Sources */,
 				DF8E94852C9097E4000C6A4E /* ScrollView.swift in Sources */,
 				DF0AA6F72C903EE200E82F3A /* Image.swift in Sources */,

@@ -12,6 +12,7 @@ enum Page: Hashable {
     case camera
     case crop(images: [UIImage])
     case filter(images: [UIImage])
+    case export(images: [UIImage])
 }
 
 class Coordinator: ObservableObject {
@@ -23,9 +24,13 @@ class Coordinator: ObservableObject {
         case .camera:
             CameraScreenView()
         case .crop(let images):
-            CropScreenView(images: images)
+            CropScreenView()
+//            CropScreenView(images: images)
         case .filter(images: let images):
-            FilterScreenView(images: images)
+            FilterScreenView()
+//            FilterScreenView(images: images)
+        case .export(let images):
+            Text("")
         }
     }
 
