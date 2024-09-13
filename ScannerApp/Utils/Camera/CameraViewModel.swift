@@ -12,8 +12,8 @@ import AVFoundation
 
 class CameraViewModel: ObservableObject {
 	
-	@ObservedObject var cameraManager = CameraManager()
-	
+    let cameraManager = CameraManager()
+
 	@Published var isFlashOn = false
 	@Published var showAlertError = false
 	@Published var showSettingAlert = false
@@ -33,7 +33,7 @@ class CameraViewModel: ObservableObject {
 	deinit {
 		cameraManager.stopCapturing()
 	}
-	
+
 	func setupBindings() {
 		cameraManager.$shouldShowAlertView.sink { [weak self] value in
 			self?.alertError = self?.cameraManager.alertError
@@ -53,7 +53,9 @@ class CameraViewModel: ObservableObject {
 	func requestCameraPermission() {
 		AVCaptureDevice.requestAccess(for: .video) { [weak self] isGranted in
 			guard let self else { return }
+            print("guard let self")
 			if isGranted {
+                print("isGranteddddd")
 				self.configureCamera()
 				DispatchQueue.main.async {
 					self.isPermissionGranted = true

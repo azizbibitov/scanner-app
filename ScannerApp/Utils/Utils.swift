@@ -8,28 +8,56 @@
 import UIKit
 
 class Utils {
+    
+    static func applyBlackAndWhiteFilter(to inputImage: UIImage, intensity: Double) async -> UIImage? {
+        await withCheckedContinuation { continuation in
+            DispatchQueue.global(qos: .userInitiated).async {
+                autoreleasepool {
+                    guard let ciImage = CIImage(image: inputImage) else {
+                        continuation.resume(returning: inputImage)
+                        return
+                    }
+                    
+                    let filter = CIFilter.colorControls()
+                    filter.inputImage = ciImage
+                    filter.saturation = Float(1.0 - intensity)
+                    
+                    let context = CIContext()
+                    
+                    guard let outputCIImage = filter.outputImage,
+                          let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {
+                        continuation.resume(returning: inputImage)
+                        return
+                    }
+                    
+                    let outputUIImage = UIImage(cgImage: cgImage)
+                    continuation.resume(returning: outputUIImage)
+                }
+            }
+        }
+    }
 
-    static func applyBlackAndWhiteFilter(to inputImage: UIImage, intensity: Double) -> UIImage {
+    static func applyWhiteBlackFilter(to inputImage: UIImage, intensity: CGFloat) async -> UIImage {
         guard let ciImage = CIImage(image: inputImage) else { return inputImage }
 
-        let filter = CIFilter.colorControls()
-        filter.inputImage = ciImage
-        filter.saturation = Float(1.0 - intensity)
+        let context = CIContext(options: nil)
+        guard let grayscaleFilter = CIFilter(name: "CIColorControls") else { return inputImage }
+        grayscaleFilter.setValue(ciImage, forKey: kCIInputImageKey)
+        grayscaleFilter.setValue(0.0, forKey: kCIInputSaturationKey)  // Convert to grayscale
+        grayscaleFilter.setValue(0.0, forKey: kCIInputBrightnessKey)  // No change in brightness
+        grayscaleFilter.setValue(1.1, forKey: kCIInputContrastKey)    // Slightly increase contrast
 
-        // Get a CIContext
-        let context = CIContext()
+        guard let grayscaleImage = grayscaleFilter.outputImage else { return inputImage }
+        guard let exposureFilter = CIFilter(name: "CIExposureAdjust") else { return inputImage }
+        exposureFilter.setValue(grayscaleImage, forKey: kCIInputImageKey)
+        exposureFilter.setValue(intensity, forKey: kCIInputEVKey)  // Adjust exposure for intensity
 
-        // Create a CGImage from the CIImage
-        guard let outputCIImage = filter.outputImage,
-              let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else {
-            return inputImage
+        guard let outputImage = exposureFilter.outputImage else { return inputImage }
+        if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+            return UIImage(cgImage: cgImage)
         }
 
-        // Create a UIImage from the CGImage
-        let outputUIImage = UIImage(cgImage: cgImage)
-
-        return outputUIImage
-
+        return inputImage
     }
 
 }

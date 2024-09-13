@@ -28,7 +28,6 @@
 		DF8E947D2C90927F000C6A4E /* CarouselSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E947C2C90927F000C6A4E /* CarouselSwiftUI.swift */; };
 		DF8E94812C9093CB000C6A4E /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E94802C9093CB000C6A4E /* UIStackView.swift */; };
 		DF8E94832C90959F000C6A4E /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E94822C90959F000C6A4E /* UIEdgeInsets.swift */; };
-		DF8E94852C9097E4000C6A4E /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E94842C9097E4000C6A4E /* ScrollView.swift */; };
 		DF8E94942C91FA11000C6A4E /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E94892C91FA10000C6A4E /* NSLayoutConstraint+.swift */; };
 		DF8E94952C91FA11000C6A4E /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E948A2C91FA10000C6A4E /* UIImage+.swift */; };
 		DF8E94962C91FA11000C6A4E /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8E948B2C91FA10000C6A4E /* CropView.swift */; };
@@ -50,6 +49,9 @@
 		DFA4BA022C7FAE0900FEC350 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA4BA012C7FAE0900FEC350 /* Launch Screen.storyboard */; };
 		DFA4BA052C7FBA8B00FEC350 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4BA042C7FBA8B00FEC350 /* Color.swift */; };
 		DFED48392C92F0BB0046D1F1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFED48382C92F0BB0046D1F1 /* Utils.swift */; };
+		DFED483B2C9303F50046D1F1 /* ExportScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFED483A2C9303F50046D1F1 /* ExportScreenView.swift */; };
+		DFED483D2C93391D0046D1F1 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFED483C2C93391D0046D1F1 /* ActivityIndicatorView.swift */; };
+		DFED483F2C9339480046D1F1 /* View+ActivityOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFED483E2C9339480046D1F1 /* View+ActivityOverlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +75,6 @@
 		DF8E947C2C90927F000C6A4E /* CarouselSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselSwiftUI.swift; sourceTree = "<group>"; };
 		DF8E94802C9093CB000C6A4E /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		DF8E94822C90959F000C6A4E /* UIEdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
-		DF8E94842C9097E4000C6A4E /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		DF8E94892C91FA10000C6A4E /* NSLayoutConstraint+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+.swift"; sourceTree = "<group>"; };
 		DF8E948A2C91FA10000C6A4E /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		DF8E948B2C91FA10000C6A4E /* CropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
@@ -96,6 +97,9 @@
 		DFA4BA012C7FAE0900FEC350 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DFA4BA042C7FBA8B00FEC350 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DFED48382C92F0BB0046D1F1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		DFED483A2C9303F50046D1F1 /* ExportScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportScreenView.swift; sourceTree = "<group>"; };
+		DFED483C2C93391D0046D1F1 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		DFED483E2C9339480046D1F1 /* View+ActivityOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ActivityOverlay.swift"; sourceTree = "<group>"; };
 		FBB9FF32E6BC5F7D38BEFF8B /* Pods-ScannerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScannerApp.release.xcconfig"; path = "Target Support Files/Pods-ScannerApp/Pods-ScannerApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +162,7 @@
 				DFA138A52C7FA7F700BB5EEB /* StartScreenView.swift */,
 				DF0AA6E52C8F29BC00E82F3A /* CameraScreenView.swift */,
 				DF8E94A42C921CCB000C6A4E /* FilterScreenView.swift */,
+				DFED483A2C9303F50046D1F1 /* ExportScreenView.swift */,
 				DF8E94A32C92183B000C6A4E /* CropScreen */,
 			);
 			path = Screens;
@@ -185,7 +190,6 @@
 		DF8E94722C907CE6000C6A4E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				DF8E94842C9097E4000C6A4E /* ScrollView.swift */,
 				DF0AA7342C90569100E82F3A /* LyEditImageView.swift */,
 				DF8E947A2C909226000C6A4E /* GradientView.swift */,
 			);
@@ -201,6 +205,7 @@
 				DF8E94782C908130000C6A4E /* CropScreenVCRepresentable.swift */,
 				DF8E947C2C90927F000C6A4E /* CarouselSwiftUI.swift */,
 				DF8E949F2C920E00000C6A4E /* GradientButtonStyle.swift */,
+				DFED483C2C93391D0046D1F1 /* ActivityIndicatorView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				DF0AA6F62C903EE200E82F3A /* Image.swift */,
 				DF0AA6F02C8F353B00E82F3A /* Modifiers.swift */,
 				DF0AA6F22C8F357000E82F3A /* View.swift */,
+				DFED483E2C9339480046D1F1 /* View+ActivityOverlay.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 				DF8E94982C91FA11000C6A4E /* BezierPath+.swift in Sources */,
 				DF0AA6E22C8F292F00E82F3A /* CameraViewModel.swift in Sources */,
 				DF0AA6E12C8F292F00E82F3A /* CameraManager.swift in Sources */,
+				DFED483B2C9303F50046D1F1 /* ExportScreenView.swift in Sources */,
 				DF0AA6ED2C8F336000E82F3A /* CropScreenView.swift in Sources */,
 				DF8E94972C91FA11000C6A4E /* UIImageView+.swift in Sources */,
 				DF8E94A02C920E00000C6A4E /* GradientButtonStyle.swift in Sources */,
@@ -436,7 +443,6 @@
 				DF0AA6EF2C8F343D00E82F3A /* HeaderView.swift in Sources */,
 				DFED48392C92F0BB0046D1F1 /* Utils.swift in Sources */,
 				DF8E94942C91FA11000C6A4E /* NSLayoutConstraint+.swift in Sources */,
-				DF8E94852C9097E4000C6A4E /* ScrollView.swift in Sources */,
 				DF0AA6F72C903EE200E82F3A /* Image.swift in Sources */,
 				DF0AA7352C90569100E82F3A /* LyEditImageView.swift in Sources */,
 				DF0AA6EB2C8F314B00E82F3A /* CaptureButton.swift in Sources */,
@@ -451,7 +457,9 @@
 				DFA4BA052C7FBA8B00FEC350 /* Color.swift in Sources */,
 				DF0AA6F32C8F357000E82F3A /* View.swift in Sources */,
 				DF8E949A2C91FA11000C6A4E /* UIView+.swift in Sources */,
+				DFED483F2C9339480046D1F1 /* View+ActivityOverlay.swift in Sources */,
 				DF0AA6F12C8F353B00E82F3A /* Modifiers.swift in Sources */,
+				DFED483D2C93391D0046D1F1 /* ActivityIndicatorView.swift in Sources */,
 				DF8E94992C91FA11000C6A4E /* TransparentView.swift in Sources */,
 				DF8E949C2C91FA11000C6A4E /* CropPickerView.swift in Sources */,
 				DF8E94832C90959F000C6A4E /* UIEdgeInsets.swift in Sources */,

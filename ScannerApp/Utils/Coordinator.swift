@@ -24,13 +24,11 @@ class Coordinator: ObservableObject {
         case .camera:
             CameraScreenView()
         case .crop(let images):
-            CropScreenView()
-//            CropScreenView(images: images)
+            CropScreenView(images: images)
         case .filter(images: let images):
-            FilterScreenView()
-//            FilterScreenView(images: images)
+            FilterScreenView(images: images)
         case .export(let images):
-            Text("")
+            ExportScreenView(images: images)
         }
     }
 

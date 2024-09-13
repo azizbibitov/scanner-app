@@ -7,10 +7,11 @@
 
 import Foundation
 import SwiftUI
+import AVFoundation
 
 struct CameraScreenView: View {
 
-    @ObservedObject var viewModel = CameraViewModel()
+    @StateObject var viewModel = CameraViewModel()
     @EnvironmentObject var coordinator: Coordinator
 
     @State private var isFocused = false
@@ -105,6 +106,10 @@ struct CameraScreenView: View {
             .onAppear {
                 viewModel.setupBindings()
                 viewModel.requestCameraPermission()
+                if !viewModel.capturedImages.isEmpty {
+                    viewModel.capturedImages.removeAll()
+                    viewModel.cameraManager.capturedImages.removeAll()
+                }
             }
         }
         .navigationBarBackButtonHidden()

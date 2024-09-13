@@ -9,17 +9,16 @@ import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
-struct FilterScreenView: SwiftUI.View {
+struct FilterScreenView: View {
 
     @EnvironmentObject var coordinator: Coordinator
 
     @State var images: [UIImage] = (1...7).compactMap { UIImage(named: "images\($0)") }
-    @StateObject var viewModel = CropScreenViewModel()
     @State private var filterIntensity: Double = 0.0
     @State var isFiltered: Bool = false
     @State var appliedFilterIntensity: Double = 0.0
 
-    var body: some SwiftUI.View {
+    var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 HeaderView(title: "Filter")
@@ -84,23 +83,23 @@ struct FilterScreenView: SwiftUI.View {
                     }
                 }
 
-                Slider(value: $filterIntensity, in: 0...1)
-                    .onChange(of: filterIntensity) { newValue in
-                        if filterIntensity > 0 && !isFiltered {
-                            isFiltered = true
-                        }else if filterIntensity == 0.0 && isFiltered {
-                            isFiltered = false
+                if isFiltered {
+                    Slider(value: $filterIntensity, in: 0...1)
+                        .onChange(of: filterIntensity) { newValue in
+                            if filterIntensity > 0 && !isFiltered {
+                                isFiltered = true
+                            }else if filterIntensity == 0.0 && isFiltered {
+                                isFiltered = false
+                            }
+                            
                         }
-
-                    }
-                    .padding()
+                        .padding()
+                }
 
                 Button(action: {
-                    var filteredImages: [UIImage] = []
-                    images.forEach { image in
-                        filteredImages.append(Utils.applyBlackAndWhiteFilter(to: image, intensity: filterIntensity))
+                    Task {
+                        await applyFiltersAndNavigate()
                     }
-                    coordinator.navigateTo(page: .export(images: filteredImages))
                 }) {
                     Text("NEXT")
                 }
@@ -111,32 +110,24 @@ struct FilterScreenView: SwiftUI.View {
         .navigationBarBackButtonHidden(true)
     }
 
-}
-
-struct FilterScreenView2: View {
-    @State var image: Image
-    @State private var filterIntensity: Double = 0.0
-    init() {
-        let uiImage = UIImage(named: "image1") ?? UIImage()
-        let filteredUIImage = Utils.applyBlackAndWhiteFilter(to: uiImage, intensity: 0.0)
-        image = Image(uiImage: filteredUIImage)
-    }
-
-    var body: some View {
-        VStack {
-            image
-                .resizable()
-                .scaledToFit()
-
-            Slider(value: $filterIntensity, in: 0...1) {
-                Text("Intensity")
+    func applyFiltersAndNavigate() async {
+        let filteredImages = await withTaskGroup(of: (Int, UIImage?).self) { group in
+            for (index, image) in images.enumerated() {
+                group.addTask {
+                    let filteredImage = await Utils.applyBlackAndWhiteFilter(to: image, intensity: filterIntensity)
+                    return (index, filteredImage)
+                }
             }
-            .padding(.horizontal)
-            .onChange(of: filterIntensity) { newValue in
-                let uiImage = UIImage(named: "image1") ?? UIImage()
-                let filteredUIImage = Utils.applyBlackAndWhiteFilter(to: uiImage, intensity: newValue)
-                image = Image(uiImage: filteredUIImage)
+
+            var results = [(Int, UIImage?)]()
+            for await result in group {
+                results.append(result)
             }
+            return results.sorted(by: { $0.0 < $1.0 }).compactMap { $0.1 }
+        }
+
+        await MainActor.run {
+            coordinator.navigateTo(page: .export(images: filteredImages))
         }
     }
 
